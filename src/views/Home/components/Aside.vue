@@ -3,26 +3,22 @@
         <div class="title">欢迎老师同学使用</div>
         <el-menu class="el-menu-vertical-demo" background-color="00FFFFFF" text-color="#fff" active-color="#9469B3"
             default-active="/introduce" router>
-            <el-menu-item index="/introduce">
-                <span class="list-item"> 简介 </span>
-            </el-menu-item>
 
-            <el-sub-menu index="/thesisTeach">
-                <template #title>
-                    <span class="list-item"> 理论教学 </span>
-                </template>
+            <template v-for="(item) in list" :key="item.route">
+                <el-sub-menu v-if="item.hasOwnProperty('children')" index="/thesisTeach">
+                    <template #title>
+                        <span class="list-item"> {{ item.title }} </span>
+                    </template>
 
-                <el-menu-item index="/thesisTeach/knowledge">
-                    <span class="list-item"> 知识基础 </span>
+                    <el-menu-item v-for="subItem in item.children" :key="subItem.route" :index="subItem.route">
+                        <span class="list-item"> {{ subItem.title }} </span>
+                    </el-menu-item>
+                </el-sub-menu>
+
+                <el-menu-item v-else :index="item.route">
+                    <span class="list-item">{{ item.title }}</span>
                 </el-menu-item>
-                <el-menu-item index="/thesisTeach/production">
-                    <span class="list-item"> 产品仓库 </span>
-                </el-menu-item>
-            </el-sub-menu>
-
-            <el-menu-item v-for="(item) in list" :key="item.title" :index="item.route">
-                <span class="list-item">{{ item.title }}</span>
-            </el-menu-item>
+            </template>
         </el-menu>
         <div class="contactUs">系统制作：牛兕科技(北京)有限公司 </div>
         <!-- <el-button @click="start" class="start" type="primary">进入系统</el-button> -->
@@ -34,12 +30,33 @@ export default {
     setup() {
         const list = [
             {
+                title: "简介",
+                route: '/introduce'
+            }, {
+                title: '理论教学',
+                route: '/thesisTeach',
+                children: [{
+                    title: '知识基础',
+                    route: '/thesisTeach/knowledge',
+                }, {
+                    title: '产品仓库',
+                    route: '/thesisTeach/production',
+                }]
+            },
+            {
                 title: "实验指南",
                 route: '/guide'
             }, {
-                title: "教学视频",
-                route: '/video'
-            }]
+                title: "实训系统",
+                route: '/trainsystem'
+            }, {
+                title: "竞赛系统",
+                route: '/competitionvideo'
+            }, {
+                title: "关于我们",
+                route: '/about'
+            }
+        ]
         const start = () => {
             window.location.href = "http://www.baidu.com"
         }

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="content">
-            <h2>知识基础</h2>
+            <h2>抱歉，该功能暂未上线</h2>
         </div>
 
     </div>
