@@ -1,22 +1,24 @@
 <template>
     <div class="home-container">
         <el-container>
-            <el-header height="140px">
-                <Header />
-            </el-header>
-            <el-container direction="horizontal">
-                <el-aside>
-                    <Aside />
-                </el-aside>
+            <el-aside width="243px">
+                <Aside />
+            </el-aside>
+            <el-container>
+                <el-header height="75px">
+                    <Header />
+                </el-header>
                 <el-main>
-                    <transition name="slide" mode="out-in">
-                        <router-view></router-view>
-                    </transition>
+                    <router-view v-slot="{ Component }">
+                        <transition name="slide" mode="out-in">
+                            <component :is="Component" />
+                        </transition>
+                    </router-view>
                 </el-main>
             </el-container>
-            <el-footer>
+            <!-- <el-footer>
                 <Footer />
-            </el-footer>
+            </el-footer> -->
 
         </el-container>
     </div>
@@ -39,14 +41,21 @@ export default {
 <style scoped>
 @import './transition.css';
 
+.home-container {}
+
 .home-container,
 .el-container {
     height: 100%;
 }
 
+.el-main {
+    background-image: url('@/assets/home/background.png');
+}
+
 .el-header,
 .el-footer {
     padding: 0;
+
 }
 
 
@@ -54,9 +63,7 @@ export default {
     border-right: 1px solid #000;
 }
 
-.home-container {
-    background-color: #D5EBF5;
-}
+.home-container {}
 
 .el-main {
     overflow: hidden;

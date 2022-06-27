@@ -1,7 +1,7 @@
 <template>
     <div class="header-container">
-        <img class="logo" :src="`${publicPath}logo.jpg`" alt="">
-        <div class="title">综合布线系统</div>
+        <div class="title">综合布线工程虚拟仿真系统</div>
+        <img class="logo" src="@/assets/home/logo.png" alt="">
     </div>
 
 </template>
@@ -20,24 +20,26 @@ export default {
 
 <style scoped>
 .header-container {
-    background-color: skyblue;
+    height: 100%;
+    background-color: #fff;
     display: flex;
-    padding: 20px;
     border-bottom: 1px solid #fff;
+    justify-content: space-between;
 }
 
 .title {
-    flex: 1;
-    font-size: 50px;
-    color: #fff;
+    margin-left: 20px;
+    font-size: 25px;
+    color: #000;
     text-align: center;
-    line-height: 100px;
-    letter-spacing: 20px;
+    line-height: 75px;
+    letter-spacing: 5px;
+    font-weight: bold;
 }
 
 .logo {
-    margin-left: 20px;
-    height: 100px;
-    width: 100px;
+    height: 80%;
+    width: 400px;
+    object-fit: fill;
 }
 </style>
